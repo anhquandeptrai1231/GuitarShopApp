@@ -64,7 +64,9 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     String token = response.body().getToken();
+                    int userId = response.body().getUserId();
                     PreferenceManager.saveToken(LoginActivity.this, token);
+                    PreferenceManager.saveUserId(LoginActivity.this, userId);
                     Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                     View view = getCurrentFocus();
                     if (view != null) {

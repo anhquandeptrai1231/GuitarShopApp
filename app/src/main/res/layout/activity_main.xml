@@ -1,112 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    android:fillViewport="true">
+    android:background="#FFFFFF">
 
-    <LinearLayout
+    <!-- Nội dung chính cuộn được -->
+    <ScrollView
+        android:id="@+id/scrollMain"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-        <!-- Header -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:weightSum="5">
+            android:orientation="vertical"
+            android:padding="16dp">
 
-            <TextView
-                android:layout_width="0dp"
+            <!-- Header -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="GUITAR SHOP"
-                android:textStyle="bold"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:weightSum="5">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="GUITAR SHOP"
+                    android:textStyle="bold"
+                    android:textSize="22sp"
+                    android:textColor="#000000"/>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="32dp"
+                    android:layout_weight="0.5"
+                    android:src="@android:drawable/btn_star_big_off"
+                    android:padding="4dp"/>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="32dp"
+                    android:layout_weight="0.5"
+                    android:src="@android:drawable/ic_menu_share"
+                    android:padding="4dp"/>
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="32dp"
+                    android:layout_weight="0.5"
+                    android:src="@android:drawable/ic_menu_sort_by_size"
+                    android:padding="4dp"/>
+
+                <!-- Nút đăng xuất -->
+                <ImageView
+                    android:id="@+id/btnLogout"
+                    android:layout_width="0dp"
+                    android:layout_height="32dp"
+                    android:layout_weight="0.5"
+                    android:src="@android:drawable/ic_lock_power_off"
+                    android:padding="4dp"/>
+            </LinearLayout>
+
+            <!-- Search bar -->
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Tìm kiếm sản phẩm hoặc thương hiệu"
+                android:drawableStart="@android:drawable/ic_menu_search"
+                android:padding="12dp"
+                android:layout_marginTop="12dp"
+                android:background="@android:drawable/edit_text"/>
+
+            <!-- Banner ViewPager -->
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPagerBanner"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:layout_marginTop="24dp"/>
+
+            <!-- Section Title -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:text="JAM DEALS THÁNG 10"
+                android:textColor="#000000"
                 android:textSize="22sp"
-                android:textColor="#000000"/>
+                android:textStyle="bold" />
 
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="32dp"
-                android:layout_weight="0.5"
-                android:src="@android:drawable/btn_star_big_off"
-                android:padding="4dp"/>
+            <!-- Category Grid -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Danh mục sản phẩm"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:layout_marginTop="20dp"/>
 
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="32dp"
-                android:layout_weight="0.5"
-                android:src="@android:drawable/ic_menu_share"
-                android:padding="4dp"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerCategory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp"
+                android:overScrollMode="never"
+                android:nestedScrollingEnabled="false" />
 
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="32dp"
-                android:layout_weight="0.5"
-                android:src="@android:drawable/ic_menu_sort_by_size"
-                android:padding="4dp"/>
-
-            <!-- Nút đăng xuất -->
-            <ImageView
-                android:id="@+id/btnLogout"
-                android:layout_width="0dp"
-                android:layout_height="32dp"
-                android:layout_weight="0.5"
-                android:src="@android:drawable/ic_lock_power_off"
-                android:padding="4dp"/>
         </LinearLayout>
+    </ScrollView>
 
-        <!-- Search bar -->
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Tìm kiếm sản phẩm hoặc thương hiệu"
-            android:drawableStart="@android:drawable/ic_menu_search"
-            android:padding="12dp"
-            android:layout_marginTop="12dp"
-            android:background="@android:drawable/edit_text"/>
+    <!-- Nút chatbot nổi -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabChatbot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_chat"
+        android:contentDescription="Chatbot"
+        android:tint="@android:color/white"/>
 
-        <!-- Banner ViewPager -->
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/viewPagerBanner"
-            android:layout_width="match_parent"
-            android:layout_height="220dp"
-            android:layout_marginTop="24dp"/>
-
-        <!-- Section Title -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:gravity="center"
-            android:text="JAM DEALS THÁNG 10"
-            android:textColor="#000000"
-            android:textSize="22sp"
-            android:textStyle="bold" />
-
-
-
-        <!-- Category Grid -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Danh mục sản phẩm"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="#000000"
-            android:layout_marginTop="20dp"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerCategory"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingStart="4dp"
-            android:paddingEnd="4dp"
-            android:overScrollMode="never"
-            android:nestedScrollingEnabled="false" />
-
-    </LinearLayout>
-</ScrollView>
+</RelativeLayout>

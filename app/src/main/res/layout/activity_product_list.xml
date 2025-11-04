@@ -2,6 +2,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:title="Sản phẩm"
+        android:titleTextColor="#FFFFFF"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerProducts"

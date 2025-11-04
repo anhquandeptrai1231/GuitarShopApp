@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
-
+import com.example.guitarshop.ui.ChatBotActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import com.example.guitarshop.models.Category;
 import com.example.guitarshop.ui.LoginActivity;
 import com.example.guitarshop.utils.PreferenceManager;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private CategoryAdapter categoryAdapter;
     private List<Category> categoryList;
     private ImageView btnLogout;
+    private FloatingActionButton fabChatbot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,19 +54,25 @@ public class MainActivity extends AppCompatActivity {
         // Logout
         btnLogout = findViewById(R.id.btnLogout);
         btnLogout.setOnClickListener(v -> showLogoutDialog());
+        fabChatbot = findViewById(R.id.fabChatbot);
+        fabChatbot.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, ChatBotActivity.class);
+            startActivity(intent);
+        });
     }
 
     private void showLogoutDialog() {
         new AlertDialog.Builder(this)
                 .setTitle("Đăng xuất")
                 .setMessage("Bạn có chắc muốn đăng xuất không?")
+
+                .setNegativeButton("Không", null)
                 .setPositiveButton("Có", (dialog, which) -> {
                     PreferenceManager.clearToken(MainActivity.this);
                     Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                     startActivity(intent);
                     finish();
                 })
-                .setNegativeButton("Không", null)
                 .show();
     }
 }
