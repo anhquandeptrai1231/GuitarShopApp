@@ -1,0 +1,50 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Icon Guitar -->
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/ic_guitar"
+    android:contentDescription="Guitar Icon"
+    android:layout_marginBottom="24dp"/>
+
+    <!-- Username -->
+    <EditText
+        android:id="@+id/etUsername"
+        android:hint="Username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <!-- Password -->
+    <EditText
+        android:id="@+id/etPassword"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Login Button -->
+    <Button
+        android:id="@+id/btnLogin"
+        android:text="Đăng nhập"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Register Button -->
+    <Button
+        android:id="@+id/btnRegister"
+        android:text="Đăng ký"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#FF9800"
+        android:textColor="#FFFFFF"/>
+
+</LinearLayout>
